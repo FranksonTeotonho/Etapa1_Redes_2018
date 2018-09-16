@@ -15,11 +15,11 @@ while True:
 	#Inicializando variavel dados  
 	dados = b''
 	#recebendo dados até convensão de final de arquivo
-	while not b'\n\n\n\n' in dados:
+	while not b'&\n\n\n\n' in dados:
 		dados += cli.recv(1024)
-
+	print(dados)
 	#Tratamento dos dados recebidos
-	method, fileName, content = dados.split(b'&', 3)
+	method, fileName, content, endFile = dados.split(b'&', 4)
 	
 	print ('Metodo: '+method + '\n')
 	print ('Arquivo: '+fileName + '\n')
@@ -48,8 +48,8 @@ while True:
 				b = f.read(1)
 				#Condicional de fim de arquivo
 				if not b:
-					print('ENTREI AQUI')
-					#Saida do loop de leitura e envio
+					#Saida do loop de leitura e envio e end of file
+					cli.send(b'&\n\n\n\n')
 					break
 				#Envio de cada byte lido para o servidor
 				cli.send(b)

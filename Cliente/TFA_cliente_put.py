@@ -19,7 +19,7 @@ with open(fileName, 'rb') as f:
 		#Condicional de fim de arquivo e envio da convensão de final de arquivo
 		if not b:
 			#4 quebras de linha significa fim de arquivo
-                        s.send(b'\n\n\n\n')
+                        s.send(b'&\n\n\n\n')
 			#Saida do loop de leitura e envio
 			break
 		#Envio de cada byte lido para o servidor
