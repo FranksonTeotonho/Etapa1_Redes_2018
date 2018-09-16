@@ -12,11 +12,11 @@ dados = b''
 #Definição do arquivo a ser recuperado do servidor
 fileName = b'teste_cliente.txt'
 #Envio do header, content inserido apenas para manter o padrão
-s.send(b'GET&'+fileName+b'&content')
+s.send(b'GET&'+fileName+b'&content\n\n\n\n')
 
 #Recebimento dos dados até convensão de final de arquivo
 while not b'\n\n\n\n' in dados:
-	dados = s.recv(1024)
+	dados += s.recv(1024)
 
 #Tratamento dos dados recebidos
 res, content = dados.split(b'&', 2)
@@ -31,6 +31,7 @@ if(res == b'OK'):
 		f.write(i)
 	#Fechando arquivo
 	f.close()
+	print('Arquivo recebido com sucesso')
 
 #Em caso de falaha, notificar ao usuario
 elif(res == b'FAIL'):

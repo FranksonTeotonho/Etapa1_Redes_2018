@@ -27,6 +27,6 @@ with open(fileName, 'rb') as f:
 #Recebendo resposta do servidor
 res = s.recv(1024)
 #Exibindo resposta
-print(res)
+print('Resposta do servidor: ' + res)
 #Finalizando conexão
 s.close()
