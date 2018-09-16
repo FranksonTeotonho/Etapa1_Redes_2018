@@ -15,7 +15,7 @@ while True:
 	dados = b''
 	#recebendo dados até convensão de final de arquivo
 	while not b'\n\n\n\n' in dados:
-		dados += cli.recv(1000000)
+		dados += cli.recv(1024)
 	
 	#Tratamento dos dados recebidos
 	method, fileName, content = dados.split(b'&', 3)
@@ -31,5 +31,22 @@ while True:
 		f.close()
 		#Resposta de sucesso ao servidor
                 cli.send(b'OK')
+	#Tratando requisição GET
+	elif method == b'GET':
+		#Enviando confirmação de sucesso
+		cli.send(b'OK&')
+		#Abrindo e lendo arquivo byte a byte
+		with open(fileName, 'rb') as f:
+			#Ler arquivo até que não haver mais nenhum byte	
+			while True:
+				#Lendo byte a byte
+				b = f.read(1)
+				#Condicional de fim de arquivo
+				if not b:
+					#Saida do loop de leitura e envio
+					break
+				#Envio de cada byte lido para o servidor
+				cli.send(b)
+
         #Finalizando conexão com cliente
 	cli.close()

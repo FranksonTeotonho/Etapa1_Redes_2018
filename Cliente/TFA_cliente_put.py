@@ -25,7 +25,7 @@ with open(fileName, 'rb') as f:
 		#Envio de cada byte lido para o servidor
 		s.send(b)
 #Recebendo resposta do servidor
-res = s.recv(1000000)
+res = s.recv(1024)
 #Exibindo resposta
 print(res)
 #Finalizando conexão
