@@ -1,3 +1,9 @@
+Alunos:
+Bruno De Azevedo Mendonça
+Eduardo Yamauchi
+Frankson Teotonho
+Welliton Altimari
+
 		Transferência simples de arquivos (TSA)
 
 Desenvolvido na linguagem Python (versão 2.7.15rc1)

@@ -37,22 +37,27 @@ while True:
 		print('Arquivo armazenado no servidor com sucesso')
 	#Tratando requisição GET
 	elif method == b'GET':
-		#Enviando confirmação de sucesso
-		cli.send(b'OK´´')
-		#Abrindo e lendo arquivo byte a byte
-		with open(fileName, 'rb') as f:
-			#Ler arquivo até que não haver mais nenhum byte	
-			while True:
-				#Lendo byte a byte
-				b = f.read(1)
-				#Condicional de fim de arquivo
-				if not b:
-					#Saida do loop de leitura e envio e end of file
-					cli.send(b'´´\n\n\n\n')
-					break
-				#Envio de cada byte lido para o servidor
-				cli.send(b)
-		print('Arquivo enviado com sucesso ao cliente')
+		try:
+			#Abrindo e lendo arquivo byte a byte
+			with open(fileName, 'rb') as f:
+				#Enviando confirmação de sucesso
+				cli.send(b'OK´´')
+				#Ler arquivo até que não haver mais nenhum byte	
+				while True:
+					#Lendo byte a byte
+					b = f.read(1)
+					#Condicional de fim de arquivo
+					if not b:
+						#Saida do loop de leitura e envio e end of file
+						cli.send(b'´´\n\n\n\n')
+						break
+					#Envio de cada byte lido para o servidor
+					cli.send(b)
+			print('Arquivo enviado com sucesso ao cliente')
+		except:
+			#Enviando falha a recuperar arquivo
+			cli.send(b'FAIL´´content´´\n\n\n\n')
+			print('Erro ao enviar arquivo ao cliente')
 
         #Finalizando conexão com cliente
 	cli.close()
