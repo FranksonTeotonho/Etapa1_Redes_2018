@@ -16,4 +16,4 @@ Para executar:
 	Na pasta do servidor execute o comando 'python TSA_servidor.py'
 	Na paste do cliente execute o comando 'python TSA_cliente_get.py'
 
-Observações: Há diversos arquivos de teste, com diversas extensões. Especifique o fileName dentro do script 'TSA_cliente_put.py' ou get 'TSA_cliente_get.py'
+Observações: Há diversos arquivos de teste, com diversas extensões. Especifique o fileName dentro do script 'TSA_cliente_put.py' ou 'TSA_cliente_get.py'
