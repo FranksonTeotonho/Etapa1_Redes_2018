@@ -17,7 +17,6 @@ while True:
 	#recebendo dados até convensão de final de arquivo
 	while not b'´´\n\n\n\n' in dados:
 		dados += cli.recv(1024)
-	print(dados)
 	#Tratamento dos dados recebidos
 	method, fileName, content, endFile = dados.split(b'´´', 4)
 	

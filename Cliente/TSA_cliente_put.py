@@ -7,7 +7,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #Conectando com servidor local
 s.connect(('127.0.0.1', 8000))
 #Definindo nome do arquivo a ser lido e enviado
-fileName = b'c.png'
+fileName = b'd.png'
 #Enviando Header com metodo e nome do arquivo, o '´´' funciona como um separador
 s.send(b'PUT´´'+fileName+b'´´')
 #Abrindo, lendo e enviando byte a byte o arquivo

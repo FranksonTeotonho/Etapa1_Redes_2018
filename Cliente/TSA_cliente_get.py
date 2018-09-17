@@ -10,7 +10,7 @@ s.connect(('127.0.0.1', 8000))
 #inicialização dos dados a serem recebidos
 dados = b''
 #Definição do arquivo a ser recuperado do servidor
-fileName = b'c.png'
+fileName = b'd.png'
 #Envio do header, content inserido apenas para manter o padrão
 s.send(b'GET´´'+fileName+b'´´content´´\n\n\n\n')
 
